@@ -1,7 +1,7 @@
 import React from "react";
-import "./Start.css";
+import "./App.css";
 
-export const Desktop = () => {
+export const App = () => {
   return (
     <div className="desktop">
       <div className="overlap-wrapper">
@@ -83,3 +83,5 @@ export const Desktop = () => {
     </div>
   );
 };
+
+export default App;
