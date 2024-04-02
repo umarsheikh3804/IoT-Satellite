@@ -14,6 +14,7 @@ export const App = () => {
       <Outlet/>
     </div>
     <VoiceBar/>
+    <Home/>
   </div>
 
   return (

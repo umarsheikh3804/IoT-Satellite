@@ -1,6 +1,13 @@
+@font-face {
+  font-family: 'mainFont'; /* Name your font */
+  src: url('../assets/inter.ttf') format('truetype'); /* Path to your font file */
+  /* You can specify other font properties here like font-weight, font-style, etc. */
+}
+
 .wrapper {
   height: 100vh;
   width: 100vw;
+  background-color: #070417;
 }
 
 .navPage {
@@ -9,8 +16,8 @@
 }
 
 .sideNavbar {
-  width: 10vw;
-  height: calc(100vh - 10vw);
+  width: 6vw;
+  height: calc(100vh - 6vh);
   background-color: #292639;
   display: flex;
   flex-direction: column;
@@ -40,12 +47,43 @@
 }
 
 .voiceBar {
-  height: 10vw;
+  height: 7vh;
   width: 100vw;
   background-color: #292639;
+  top: 50px;
+  
 
 }
 
 .page, .sideNavbar, .voiceBar {
   color: white;
 }
+
+.homePage{
+  background-color: #070417;
+}
+
+.allJobs {
+  width:900px;
+  height:500px;
+  margin-left: 30px;
+  margin-top: 300px;
+  background-color:#3F3C4E;
+  border-radius: 10px 10px 0px 0px;
+}
+.jobTitle{
+  width:900px;
+  height:96px;
+  border-radius: 10px 10px 0px 0px;
+  
+  margin-top: 300px;
+
+  background-color: #292639;
+}
+.allJobsTitle{
+  font-size: 28x;
+  font-weight: 600;
+  font-family: 'mainFont' ;
+  color:white;
+}
+
