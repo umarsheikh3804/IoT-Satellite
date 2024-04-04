@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import house from '../assets/navbar-house.png';
-import plus from '../assets/plus.png';
+import plus from '../assets/Shape.png';
 import settings from '../assets/navbar-settings.png';
 import notifications from'../assets/navbar-notification.png';
 import emptyhouse from '../assets/emptyhouse.png';
@@ -20,10 +20,10 @@ export const Nav = () => {
         <img src={plus} className="navImage"/>
       </Link>
       <Link to="" className="navImageLink">
-        <img src={settings} className="navImage"/>
+        <img src={notifications} className="navImage"/>
       </Link>
       <Link to="" className="navImageLink">
-        <img src={notifications} className="navImage"/>
+        <img src={settings} className="navImage"/>
       </Link>
     </div>   
   );

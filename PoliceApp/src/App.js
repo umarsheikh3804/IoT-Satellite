@@ -2,7 +2,7 @@ import React from "react";
 import Home from "./components/Home"
 import Nav from "./components/Nav"
 import NewJob from "./components/NewJob";
-import VoiceBar from "./components/VoiceBar";
+//import VoiceBar from "./components/VoiceBar";
 import "./App.css";
 import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom"
 
@@ -13,7 +13,6 @@ export const App = () => {
       <Nav/>
       <Outlet/>
     </div>
-    <VoiceBar/>
     <Home/>
   </div>
 
