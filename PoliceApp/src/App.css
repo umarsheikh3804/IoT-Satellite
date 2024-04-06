@@ -224,36 +224,30 @@
 .vehicleStatus .statusType{
   margin: 0px;
 }
-.vehicleStatus .greenNotification {
+
+.vsNotification {
   border-radius: 25px;
-  background-color: #1BCC66;
   height: 24px; /* Adjust height if needed */
   width: 60px; /* Adjust width if needed */
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.vehicleStatus .greenNotification {
+  background-color: #1BCC66;
+  border-radius: 25px;
   margin-left: 250px;
 }
 
 .vehicleStatus .yellowNotification {
-  border-radius: 25px;
   background-color: #FFAA47;
-  height: 24px; /* Adjust height if needed */
-  width: 60px; /* Adjust width if needed */
-  display: flex;
-  justify-content: center;
-  align-items: center;
   margin-left: 243px;
 }
 
 .vehicleStatus .redNotification {
-  border-radius: 25px;
   background-color: #FF3636;
-  height: 24px; /* Adjust height if needed */
-  width: 60px; /* Adjust width if needed */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  border-radius: 25px;
   margin-left: 280px;
 }
 
