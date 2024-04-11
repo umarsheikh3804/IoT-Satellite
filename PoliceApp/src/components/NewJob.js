@@ -1,33 +1,44 @@
+"use client";
+
+import { useState } from "react";
 import React from "react";
-import GoogleMapReact from 'google-map-react';
+import {
+  APIProvider,
+  Map,
+  Marker,
+  Pin,
+  InfoWindow,
+} from '@vis.gl/react-google-maps';
 
-const Marker = ({ text }) => <div
-  className="mapMarker"
->{text}</div>;
+export default function Intro() {
+  const position = { lat: 30.2672, lng: -97.74711985445532 };
+  const [open, setOpen] = useState(false);
 
-export const NewJob = () => {
-  const defaultProps = {
-    center: {
-      lat: 59.95, 
-      lng: 30.33
-    },
-    zoom: 11
-  };
   return (
-    <div style={{ height: '93vh', width: '100%' }}>
-      <GoogleMapReact
-        bootstrapURLKeys={{ key: "" }}
-        defaultCenter={defaultProps.center}
-        defaultZoom={defaultProps.zoom}
-      >
-        <Marker
-          lat={59.955413} 
-          lng={30.337844} 
-          text={'Kreyser Avrora'} 
-        />
-      </GoogleMapReact>
-    </div>
-  );
-};
+    <APIProvider apiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}>
+      <div style={{ height: "100vh", width: "100%" }}>
+        <Map defaultZoom={13} defaultCenter={position} mapId={process.env.NEXT_PUBLIC_MAP_ID}>
+          <Marker position={position} onClick={() => setOpen(true)}>
+            <Pin
+              background={"grey"}
+              borderColor={"green"}
+              glyphColor={"purple"}
+            />
+          </Marker>
 
-export default NewJob;
+          {open && (
+            <InfoWindow position={position} onCloseClick={() => setOpen(false)}>
+              <p>I'm in Austin</p>
+            </InfoWindow>
+          )}
+        </Map>
+      </div>
+    </APIProvider>
+  );
+}
+
+
+
+
+
+
