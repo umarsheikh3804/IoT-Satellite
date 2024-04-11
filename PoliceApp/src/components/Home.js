@@ -117,23 +117,10 @@ export const Home = () => {
         </div>
         <div className="jobInfo">
           <div className="jobContainer"></div>
-          <img src={line} className="vehicleLine" alt="Line" />
-          <div className="statusContainer">
-            <p className="statusType">Occupied</p>
-            <div className="yellowNotification">
-              <p className="notificationText">162</p>
-            </div>
-          </div>
-          <img src={line} className="vehicleLine" alt="Line" />
-          <div className="statusContainer">
-            <p className="statusType">Away</p>
-            <div className="redNotification">
-              <p className="notificationText">20</p>
-            </div>
+          
           </div>
         </div>
       </div>
-    </div>
   );
 };
 
