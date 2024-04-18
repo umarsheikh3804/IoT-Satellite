@@ -27,6 +27,8 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  -webkit-backdrop-filter: blur(15px) brightness(100%);
+  backdrop-filter: blur(15px) brightness(100%);
 }
 
 .navImage {
@@ -266,8 +268,8 @@
 
 .timeBox .timeSection {
   background-color: #292639;
-  height: 232px;
-  width: 150px;
+  height: 245px;
+  width: 175px;
   border-radius: 10px 0px 0px 10px;
   display: flex;
   align-items: center;
@@ -280,15 +282,19 @@
 .timeDisplay .currentTime {
   color: white;
   font-family: 'mainFont';
-  font-size: 30px;
+  font-size: 35px;
   font-weight: 600;
+  padding-top: 10px;
+  padding-left: 5px;
 }
 
 .dateDisplay .currentDate {
   color: white;
   font-family: 'mainFont';
-  font-size: 30px;
+  font-size: 40px;
+  margin-left: 16px;
   font-weight: 600;
+  margin-bottom: 20px;
 }
 
 .mapMarker {
@@ -300,3 +306,4 @@
   justify-content: center;
   border-radius: 100%;
 }
+

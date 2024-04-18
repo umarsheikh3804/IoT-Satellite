@@ -28,6 +28,7 @@ export default function Intro() {
     });
   }, []);
 
+
   return (
     <APIProvider apiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}>
       <div style={{ height: "100vh", width: "100%" }}>
@@ -59,4 +60,9 @@ export default function Intro() {
       </div>
     </APIProvider>
   );
-}
+};
+
+
+
+
+
