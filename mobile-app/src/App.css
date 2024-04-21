@@ -1,38 +1,189 @@
-.App {
-  text-align: center;
+@font-face {
+  font-family: 'mainFont';
+  /* Name your font */
+  src: url('../src/assets/inter.ttf') format('truetype');
+  /* Path to your font file */
+  /* You can specify other font properties here like font-weight, font-style, etc. */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.page,
+.navbar {
+  width: 100vw;
+  background-color: #171422;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.navbar {
+  height: calc(var(--vh, 1vh) * 10);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.login,
+.newJob {
+  height: calc(var(--vh, 1vh) * 100);
+}
+
+.dashboard,
+.settings {
+  height: calc(var(--vh, 1vh) * 90);
+}
+
+.flexCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.statusPopup {
+  background-color: #292639;
+}
+
+.dashboardTitle {
+  color: #FFF;
+  font-family: "mainFont";
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 600;
+  margin-left: 40px;
+  margin-top: 0px;
+}
+
+.dateTimeContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  margin-left: 40px;
+}
+
+.timeDisplay .currentTime,
+.timeDisplay .currentDate {
+  color: white;
+  font-family: 'mainFont';
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.timeDisplay .currentTime {
+  
+}
+
+.dateDisplay .currentDate {
+  
+}
+
+.statusHeader {
+  font-size: 18px;
+  font-weight: 600;
+  ;
+}
+
+.statusOption {
+  padding: 0.5em;
+  border-top: 1px solid #7A7788;
+}
+
+.allJobs {
+  width:87vw;
+  height:525px;
+  margin-left: 30px;
+  background-color:#3F3C4E;
+  border-radius: 10px 10px 10px 10px;
+  margin-top: 20px;
+}
+.allJobs .jobTitle{
+  width:87vw;
+  height:80px;
+  border-radius: 10px 10px 0px 0px;
+  font-size: 28px;
+  left: 30px;
+  background-color: #292639;
+  display: flex;
+  align-items: center;
+}
+
+.jobTitle .allJobsTitle{
+  padding:40px;
+  font-weight: 600;
+  font-family: "mainFont" ;
+  color:white;
+}
+
+.jobTitle .blueNotification {
+  border-radius: 25px;
+  background-color: #499dff;
+  height: 39px;
+  width: 104px;
+}
+
+.jobTitle .blueNotification .notificationText {
+  color: white;
+  font-family: 'mainFont';
+  font-size: 24px;
+  font-weight: 600;
+  position: absolute;
+  margin-left: 50px;
+  transform: translate(-50%, -70%);
+}
+
+.jobInfo{
+  color: white;
+  padding-top: 5px;
+  font-size: 19px;
+  font-weight: 400;
+}
+
+.jobInfo .jobInfoSubtitles {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.jobInfo .jobContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+/* .prioritySubtitle {
+  gap: 30px;
+}
+
+.jobSubtitle {
+  gap: 30px;
+}
+
+.addressSubtitle {
+  gap: 30px;
+} */
+
+.jobInfo .greenNotification {
+  border-radius: 25px;
+  background-color: #1BCC66;
+  height: 24px; /* Adjust height if needed */
+  width: 60px; /* Adjust width if needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 250px;
+}
+
+.jobInfo .yellowNotification {
+  border-radius: 25px;
+  background-color: #FFAA47;
+  height: 24px; /* Adjust height if needed */
+  width: 60px; /* Adjust width if needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 243px;
+}
+
+.jobInfo .redNotification {
+  border-radius: 25px;
+  background-color: #FF3636;
+  height: 24px; /* Adjust height if needed */
+  width: 60px; /* Adjust width if needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 280px;
 }
