@@ -3,7 +3,9 @@
 import { useState, useEffect } from "react";
 import React from "react";
 import { db } from '../firebase';
+import line from '../assets/line.svg';
 import { onValue, ref } from "firebase/database";
+import { Link } from 'react-router-dom';
 import {
   APIProvider,
   Map,
@@ -32,6 +34,30 @@ export default function Intro() {
   return (
     <APIProvider apiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}>
       <div style={{ height: "100vh", width: "100%" }}>
+        <div className="rectangle">
+          <div className="newJob">
+            <p className="newJobt">New Job</p>
+          </div>
+            <div className = 'jobInfo'>
+              <p className ='addressName'>2510 Rio Grande St</p>
+              <p className = 'numberName'>512-738-1937</p>
+              <p className = 'callTime'>7:06 PM</p>
+            
+            <div className = 'tag1'>
+              <p className = 'callerTag'>Caller</p>
+              <p className = 'priorityTag'>Priority</p>
+              <p className = 'vehicleTag'>Vehicles</p>
+            </div>
+            <div className = 'tag2'>
+              <p className = 'jobTag'>Job</p>
+              <p className = 'notesTag'>Notes</p>
+            </div>
+            <div classname = 'tag3'>
+             
+              <Link to="/Home" className="nextTag">Next</Link>
+            </div>
+          </div>
+        </div>
         <Map defaultZoom={13} defaultCenter={position} mapId={process.env.NEXT_PUBLIC_MAP_ID}>
           {
             vehicles.map((vehicle, index) =>

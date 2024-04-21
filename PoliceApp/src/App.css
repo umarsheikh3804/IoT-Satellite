@@ -46,6 +46,7 @@
   justify-content: center;
   margin-top:1.75cm;
   margin-left: .27cm;;
+  z-index: 100000;
 }
 
 .page {
@@ -282,16 +283,16 @@
 .timeDisplay .currentTime {
   color: white;
   font-family: 'mainFont';
-  font-size: 35px;
+  font-size: 32px;
   font-weight: 600;
   padding-top: 10px;
-  padding-left: 5px;
+  padding-left: 1px;
 }
 
 .dateDisplay .currentDate {
   color: white;
   font-family: 'mainFont';
-  font-size: 40px;
+  font-size: 32px;
   margin-left: 16px;
   font-weight: 600;
   margin-bottom: 20px;
@@ -307,3 +308,155 @@
   border-radius: 100%;
 }
 
+.rectangle {
+  position: fixed; 
+  top: 50px; 
+  left: 130px;
+  width: 550px; 
+  height: 780px; 
+  background-color: #3F3C4E; 
+  z-index: 10000; 
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+backdrop-filter: blur(7.5px);
+opacity: 95%;
+border-radius: 10px;
+
+  
+}
+
+.newJob {
+ background-color: #292639;
+ position: absolute;
+
+ 
+ width: 550px; 
+ height: 150px;
+ z-index: 12; 
+ border-radius: 10px;
+}
+
+.newJobt {
+  color: white;
+  font-size: 32px;
+  font-weight: 600;
+  font-family: 'mainFont';
+  padding-left: 50px;
+  padding-top: 20px;
+  position: absolute;
+}
+
+.jobInfo{
+  position: fixed; 
+  top: 160px; 
+  left: 26px;
+  width: 550px; 
+  height: 780px; 
+  padding: 20px;
+  
+  z-index: 10; 
+  
+ 
+}
+
+.addressName{
+  margin-bottom: 10px; /* Space below each text */
+  font-size: 18px; /* Adjust font size as needed */
+  color: white;
+  font-family: 'mainFont';
+  font-weight: 600;
+  font-size: 25px;
+  bottom: 30px;
+}
+.numberName{
+  margin-bottom: 10px; /* Space below each text */
+  font-size: 16px; /* Adjust font size as needed */
+  color: white;
+  font-weight: 400;
+
+  
+}
+
+
+.callTime {
+  font-size: 16px; /* Adjust font size as needed */
+  color: white;
+  font-weight: 400;
+  margin-bottom: 50px;
+  
+}
+
+.callerTag {
+color:white;
+margin-right: 70px;
+font-family: 'mainFont';
+font-size: 15px;
+font-weight: 400;
+margin-bottom: 60px;
+}
+
+.priorityTag{
+color:white;
+margin-right: 75px;
+font-family: 'mainFont';
+font-size: 15px;
+font-weight: 400;
+margin-bottom: 60px;
+}
+
+.vehicleTag{
+color:white;
+
+font-family: 'mainFont';
+font-size: 15px;
+font-weight: 400;
+margin-bottom: 60px;
+}
+.jobTag{
+color:white;
+font-family: 'mainFont';
+font-size: 15px;
+font-weight: 400;
+margin-bottom:70px ;
+
+}
+.notesTag{
+  color:white;
+  font-family: 'mainFont';
+font-size: 15px;
+font-weight: 400;
+margin-bottom: 100px;
+
+}
+
+.tag1{
+  display: flex;
+  justify-content: start;
+  padding-top: 30px;
+}
+
+.tag1 p {
+  border-bottom: 1px solid #FFFFFF; /* Adjust color and thickness as needed */
+  padding-bottom: 5px; 
+  width: 100px;
+}
+
+.tag2 p{
+  border-bottom: 1px solid #FFFFFF; /* Adjust color and thickness as needed */
+  padding-bottom: 5px; 
+  width: 440px;
+
+}
+
+.tag3 {
+  display: flex;
+  justify-content: start; /* Aligns children to the start of the container */
+  align-items: center; /* Centers children vertically */
+  margin-top: 50px;
+}
+
+
+.nextTag{
+  color: white;
+  padding-left: 190px;
+  
+}

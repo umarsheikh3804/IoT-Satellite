@@ -26,7 +26,7 @@ const DateTimeDisplay = ({ currentTime }) => {
     const dateParts = formattedDate.split(", ");
     const formattedParts = dateParts.filter(part => part !== undefined && part !== null);
 
-    return formattedParts.join(" ");
+    return formattedParts.join(" ").toUpperCase();
   };
 
   return (
@@ -67,6 +67,8 @@ export const Home = () => {
       clearInterval(timer);
     };
   }, []);
+
+  
 
   return (
     <div className="homePage">
