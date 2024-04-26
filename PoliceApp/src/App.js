@@ -13,14 +13,14 @@ export const App = () => {
       <Nav/>
       <Outlet/>
     </div>
-    <VoiceBar/>
+    
   </div>
 
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={layout}>
-          <Route path="Home" element={<Home/>}/>
+          <Route path="" element={<Home/>}/>
           <Route path="newJob" element={<NewJob/>}/>
           
         </Route>

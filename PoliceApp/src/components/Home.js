@@ -108,6 +108,13 @@ export const Home = () => {
           <div className="timeSection">
             <DateTimeDisplay currentTime={currentTime} />
           </div>
+          <div className = 'newsBox'>
+            <p className = 'recent'>Recent Road Closures</p>
+            <p className = 'recentStreet'>N Main Blvd</p>
+            <p className = 'recentTime'>End: March 23 - 00:00</p>
+            <p className = 'recentStreet'>Guadalupe St</p>
+            <p className = 'recentTime2'>Mar 22 - 6:00</p>
+          </div>
         </div>
       </div>
       <div className="allJobs">

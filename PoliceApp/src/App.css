@@ -116,7 +116,6 @@
   font-family: 'mainFont';
   font-size: 24px;
   font-weight: 600;
-  position: absolute;
   margin-left: 50px;
   transform: translate(-50%, -70%);
 }
@@ -207,7 +206,6 @@
   font-family: 'mainFont';
   font-size: 22px;
   font-weight: 600;
-  position: absolute;
   margin-left: 40px;
   transform: translate(-50%, -70%);
 }
@@ -279,15 +277,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  
 }
 .timeDisplay .currentTime {
   color: white;
   font-family: 'mainFont';
   font-size: 32px;
   font-weight: 600;
-  padding-top: 10px;
+ 
   padding-left: 1px;
 }
+
 
 .dateDisplay .currentDate {
   color: white;
@@ -295,7 +296,8 @@
   font-size: 32px;
   margin-left: 16px;
   font-weight: 600;
-  margin-bottom: 20px;
+
+  
 }
 
 .mapMarker {
@@ -310,6 +312,9 @@
 
 .rectangle {
   position: fixed; 
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   top: 50px; 
   left: 130px;
   width: 550px; 
@@ -326,11 +331,9 @@ border-radius: 10px;
 
 .newJob {
  background-color: #292639;
- position: absolute;
-
  
  width: 550px; 
- height: 150px;
+ height: 120px;
  z-index: 12; 
  border-radius: 10px;
 }
@@ -341,38 +344,44 @@ border-radius: 10px;
   font-weight: 600;
   font-family: 'mainFont';
   padding-left: 50px;
-  padding-top: 20px;
-  position: absolute;
 }
 
-.jobInfo{
-  position: fixed; 
-  top: 160px; 
-  left: 26px;
-  width: 550px; 
-  height: 780px; 
-  padding: 20px;
-  
+.jobInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 470px; 
+  height: 760px; 
+  padding: 40px;
   z-index: 10; 
-  
- 
 }
+
+.jobInfoDesc {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+
 
 .addressName{
-  margin-bottom: 10px; /* Space below each text */
+  margin-bottom: 30px; /* Space below each text */
   font-size: 18px; /* Adjust font size as needed */
-  color: white;
+  background-color: #3F3C4E;
   font-family: 'mainFont';
+  color: white;
   font-weight: 600;
   font-size: 25px;
-  bottom: 30px;
+  border: none;
 }
 .numberName{
-  margin-bottom: 10px; /* Space below each text */
+  margin-bottom: 30px; /* Space below each text */
   font-size: 16px; /* Adjust font size as needed */
   color: white;
+  background-color: #3F3C4E;
   font-weight: 400;
-
+  border: none;
   
 }
 
@@ -381,13 +390,14 @@ border-radius: 10px;
   font-size: 16px; /* Adjust font size as needed */
   color: white;
   font-weight: 400;
-  margin-bottom: 50px;
+  background-color: #3F3C4E;
+  margin-bottom: 75px;
+  border: none;
   
 }
 
 .callerTag {
 color:white;
-margin-right: 70px;
 font-family: 'mainFont';
 font-size: 15px;
 font-weight: 400;
@@ -411,52 +421,111 @@ font-size: 15px;
 font-weight: 400;
 margin-bottom: 60px;
 }
-.jobTag{
-color:white;
-font-family: 'mainFont';
-font-size: 15px;
-font-weight: 400;
-margin-bottom:70px ;
 
+.jobTag {
+  color:white;
+  font-family: 'mainFont';
+  font-size: 15px;
+  font-weight: 400;
+  margin-bottom: 70px;
 }
 .notesTag{
   color:white;
   font-family: 'mainFont';
-font-size: 15px;
-font-weight: 400;
-margin-bottom: 100px;
+  font-size: 15px;
+  font-weight: 400;
+  margin-bottom: 100px;
 
+}
+
+.tag1, .tag2, .tag3 {
+  width: 100%;
 }
 
 .tag1{
   display: flex;
-  justify-content: start;
-  padding-top: 30px;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .tag1 p {
+  margin-block-start: 0;
+}
+
+.tag1 label, .tag1 select {
+  font-size: 16px;
+}
+
+.tag1 input, .tag1 p {
   border-bottom: 1px solid #FFFFFF; /* Adjust color and thickness as needed */
-  padding-bottom: 5px; 
+  margin-bottom: 5px; 
   width: 100px;
 }
 
-.tag2 p{
+.tag1 input, .tag2 input, .priorityInput, .vehicleInput {
   border-bottom: 1px solid #FFFFFF; /* Adjust color and thickness as needed */
-  padding-bottom: 5px; 
-  width: 440px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  background-color: transparent;
+  color: white;
+}
 
+.priorityInput option, .vehicleInput option {
+  background-color: #3F3C4E;
+}
+
+.priorityInput, .vehicleInput {
+  width: 100px;
+}
+
+.tag2 input {
+  width: 100%;
+}
+
+.jobInfo input:focus {
+  outline: none;
+}
+.jobInfo ::placeholder {
+  color: white;
 }
 
 .tag3 {
   display: flex;
-  justify-content: start; /* Aligns children to the start of the container */
+  justify-content: flex-end; /* Aligns children to the start of the container */
   align-items: center; /* Centers children vertically */
-  margin-top: 50px;
+  width: 100%;
 }
 
 
-.nextTag{
+.nextTag {
+  border-radius: 25px;
+  width: 100px;
+  height:40px;
+  font-weight: 400;
+  box-shadow: none;
+}
+
+.nextTag.cancel {
+  background-color: transparent;
   color: white;
-  padding-left: 190px;
+  border: 1px solid white;
+
+}
+.nextTag.confirm {
+  background-color: white;
+  color: black;
+  margin-left: 25px;
   
+}
+
+.newsBox{
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+
 }
