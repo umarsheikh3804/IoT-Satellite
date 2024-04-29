@@ -1,7 +1,7 @@
 function Settings() {
   return (
     <div className="settings page">
-      <p>Dashboard</p>
+      <p>Settings</p>
     </div>
   );
 }

@@ -14,8 +14,21 @@
 }
 
 .navbar {
-  height: calc(var(--vh, 1vh) * 10);
+  width: 100%;
+  background-color: #171422;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: calc(100vh - var(--vh, 1vh) * 90); /* Calculate height to fill remaining space */
 }
+
+.navIcon {
+  cursor: pointer;
+  font-size: 24px;
+}
+
+
 
 .login,
 .newJob {
@@ -34,6 +47,19 @@
 
 .statusPopup {
   background-color: #292639;
+  position: absolute;
+  width: 93vw;
+  height: calc(var(--vh, 1vh) * 27.5);
+  top: 550px; 
+  left: 17px; 
+  z-index: 1000; 
+}
+
+
+.policeImg {
+  width: 70px;
+  height: 70px;
+  margin-right: 30px;
 }
 
 .dashboardTitle {
@@ -61,23 +87,23 @@
   font-size: 14px;
 }
 
-.timeDisplay .currentTime {
-  
-}
-
-.dateDisplay .currentDate {
-  
-}
-
 .statusHeader {
-  font-size: 18px;
+  font-size: 30px;
   font-weight: 600;
-  ;
+  padding: 0.6em;
 }
 
 .statusOption {
-  padding: 0.5em;
+  padding: 0.8em;
   border-top: 1px solid #7A7788;
+  font-family: 'mainFont';
+  margin-left: 30px;
+  width: 330px;
+}
+
+.statusType {
+  font-family: 'mainFont';
+  margin-left: 50px;
 }
 
 .allJobs {
@@ -143,18 +169,6 @@
   margin-top: 10px;
 }
 
-/* .prioritySubtitle {
-  gap: 30px;
-}
-
-.jobSubtitle {
-  gap: 30px;
-}
-
-.addressSubtitle {
-  gap: 30px;
-} */
-
 .jobInfo .greenNotification {
   border-radius: 25px;
   background-color: #1BCC66;
@@ -187,3 +201,24 @@
   align-items: center;
   margin-left: 280px;
 }
+
+.jobStats {
+  padding-left: 25px;
+}
+
+.vehicleContainer {
+  display: flex;
+  margin-bottom: 20px; 
+  justify-content: center;
+}
+
+.vehicleInfo {
+  margin-right: 20px;
+}
+
+.dashboardHeader {
+  display: flex; /* Use flexbox to make children display in a row */
+  align-items: center; /* Center-align items vertically */
+  justify-content: space-between; 
+}
+
