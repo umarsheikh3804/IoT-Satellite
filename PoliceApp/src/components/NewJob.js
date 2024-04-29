@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 import React from "react";
 import { db } from '../firebase';
 import line from '../assets/line.svg';
-import { onValue, ref } from "firebase/database";
-import { Link } from 'react-router-dom';
+import { onValue, ref,push,update } from "firebase/database";
+import { Link, useNavigate } from 'react-router-dom';
 import {
   APIProvider,
   Map,
@@ -15,11 +15,30 @@ import {
 } from '@vis.gl/react-google-maps';
 
 export default function Intro() {
+  const navigate = useNavigate()
   const position = { lat: 30.2672, lng: -97.74711985445532 };
+  const incident = {
+    position: { lat: 30.2672, lng: -97.74711985445532 },
+    address: "2510 Rio Grande St",
+    number: "512-738-1937",
+    callTime: "7:06 PM"
+  }
+
   const [open, setOpen] = useState(false);
   const [vehicles, setVehicles] = useState([])
+  const [section, setSection] = useState(0)
+  const [priority, setPriority] = useState(0)
+  const [vehiclesDropdown, setVehiclesDropdown] = useState(0)
+  const [caller, setCaller] = useState('');
+  const [job, setJob] = useState('');
+  const [notes, setNotes] = useState('');
+  const [address, setAddress] = useState('');
+const [number, setNumber] = useState('');
+const [callTime, setCallTime] = useState(new Date().toLocaleTimeString());
 
   useEffect(() => {
+    setCallTime(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+
     const query = ref(db, `/vehicles`);
     return onValue(query, (snapshot) => {
       const data = snapshot.val();
@@ -28,36 +47,113 @@ export default function Intro() {
         setVehicles(Object.values(data))
       }
     });
+    
   }, []);
 
+  function firstSectionNext() {
+    if (priority > 0 && vehiclesDropdown > 0) {
+      const jobData = {
+        caller,
+        job,
+        notes,
+        address,
+        number,
+        callTime,
+        priority: parseInt(priority, 10), 
+        vehicleType: vehiclesDropdown, 
+      };
+  
+      
+      const newJobRef = ref(db, 'jobs/');
+      const newJobKey = push(newJobRef).key;
+      const updates = {};
+      updates['/jobs/' + newJobKey] = jobData;
+  
+      update(ref(db), updates).then(() => {
+        setSection(1); 
+      }).catch(error => {
+        alert('Failed to submit job: ' + error.message);
+      });
+    } else {
+      alert("Missing Information");
+    }
+  }
+
+ 
+
+  const firstSection = <div className="rectangle">
+    <div className="newJob">
+      <p className="newJobt">New Job</p>
+    </div>
+    <div className = 'jobInfo'>
+    <div className='jobInfoDesc'>
+      <input
+        className='addressName'
+        value={address}
+        onChange={(e) => setAddress(e.target.value)}
+        placeholder="Address"
+      />
+      <input
+        className='numberName'
+        value={number}
+        onChange={(e) => setNumber(e.target.value)}
+        placeholder="Phone Number"
+      />
+      <div className='callTime'>
+        {callTime}
+      </div>
+    </div>
+  
+      
+      <div className = 'tag1'>
+      <input className='callerTag' placeholder="Caller" value={caller} onChange={e => setCaller(e.target.value)} />
+        
+        <select className="priorityInput" value={priority} onChange={e => setPriority(e.target.value)}>
+          <option value={0}>Priority</option>
+          <option value={1}>1</option>
+          <option value={2}>2</option>
+          <option value={3}>3</option>
+          <option value={4}>4</option>
+        </select>
+        
+       
+
+        <select className="vehicleInput" value = {vehiclesDropdown} onChange={e => setVehiclesDropdown(e.target.value)}>
+          <option value={0}>Vehicles</option>
+          <option value={1}>Cars</option>
+          <option value={2}>Ambulances</option>
+          <option value={3}>Firetrucks</option>
+          
+        </select>
+      </div>
+      <div className='tag2'>
+      <input className='jobTag' placeholder="Job" value={job} onChange={e => setJob(e.target.value)} />
+      <input className='notesTag' placeholder="Notes" value={notes} onChange={e => setNotes(e.target.value)} />
+      </div>
+      <div className='tag3'>
+        <button className="nextTag cancel" onClick={() => navigate("/")}>Cancel</button>
+        <button className="nextTag confirm" onClick={firstSectionNext}>Next</button>
+      </div>
+    </div>
+  </div>
+
+  const secondSection = <div className="rectangle">
+    <div className="newJob">
+      <p className="newJobt">Suggested Units</p>
+    </div>
+      
+     
+      
+      <button className="nextTag" onClick={() => navigate("/")}>Confirm</button>
+    </div>
+    
+  
+  const pages = [firstSection, secondSection]
 
   return (
     <APIProvider apiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}>
       <div style={{ height: "100vh", width: "100%" }}>
-        <div className="rectangle">
-          <div className="newJob">
-            <p className="newJobt">New Job</p>
-          </div>
-            <div className = 'jobInfo'>
-              <p className ='addressName'>2510 Rio Grande St</p>
-              <p className = 'numberName'>512-738-1937</p>
-              <p className = 'callTime'>7:06 PM</p>
-            
-            <div className = 'tag1'>
-              <p className = 'callerTag'>Caller</p>
-              <p className = 'priorityTag'>Priority</p>
-              <p className = 'vehicleTag'>Vehicles</p>
-            </div>
-            <div className = 'tag2'>
-              <p className = 'jobTag'>Job</p>
-              <p className = 'notesTag'>Notes</p>
-            </div>
-            <div classname = 'tag3'>
-             
-              <Link to="/Home" className="nextTag">Next</Link>
-            </div>
-          </div>
-        </div>
+        {pages[section]}
         <Map defaultZoom={13} defaultCenter={position} mapId={process.env.NEXT_PUBLIC_MAP_ID}>
           {
             vehicles.map((vehicle, index) =>
