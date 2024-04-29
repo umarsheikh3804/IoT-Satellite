@@ -116,11 +116,11 @@
   font-family: 'mainFont';
   font-size: 24px;
   font-weight: 600;
-  margin-left: 50px;
+  margin-left: 60px;
   transform: translate(-50%, -70%);
 }
 
-.jobInfo{
+.jobInfo {
   color: white;
   padding-top: 5px;
   padding-left: 30px;
@@ -128,10 +128,97 @@
   font-weight: 400;
 }
 
-.jobInfo .jobContainer {
+.jobContainer {
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 10px;
+  color: white;
+  width: 100%;
+  padding: 20px;
+  height: 395px;
+}
+
+.jobRow {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
   align-items: center;
-  margin-top: 10px;;
+  flex-shrink: 0; 
+  
+  
+  
+}
+
+.jobRow.jobHeader {
+  height: 30px;
+}
+
+.jobRow.listItem {
+  height: 55px;
+}
+
+.jobRow p:nth-child(1) {
+  width: 10%;
+}
+
+.jobRow p:nth-child(2) {
+  width: 20%;
+}
+
+.jobRow p:nth-child(3) {
+  width: 30%;
+}
+
+.jobRow p:nth-child(4) {
+  width: 20%;
+}
+
+.jobRow p:nth-child(5) {
+  width: 20%;
+}
+
+.jobList {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: calc(100% - 40px);
+  height: 365px;
+
+}
+
+.jobList::-webkit-scrollbar-track {
+  background: #3F3C4E; /* Light grey, change as needed */
+  border-radius: 10px; /* Optional: adds rounded corners to the track */
+}
+
+/* Styles for the draggable part of the scrollbar */
+.jobList::-webkit-scrollbar-thumb {
+  background: #292639;
+  border-radius: 10px; 
+}
+
+
+.jobList::-webkit-scrollbar {
+  width: 8px; /* Adjust the width of the scrollbar */
+}
+
+/* Optional: style for the scrollbar button (arrows at the ends) */
+.jobList::-webkit-scrollbar-button {
+  display: none; /* Often not styled or hidden, but customizable */
+}
+
+.jobContainer p {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-left: 30px;
+}
+
+.jobHeader {
+  width: calc(100% - 40px);
+  border-bottom: 1px solid #7A7788;
 }
 
 .jobInfo .greenNotification {
@@ -206,7 +293,7 @@
   font-family: 'mainFont';
   font-size: 22px;
   font-weight: 600;
-  margin-left: 40px;
+  margin-left: 45px;
   transform: translate(-50%, -70%);
 }
 
@@ -263,6 +350,7 @@
   -webkit-backdrop-filter: blur(15px) brightness(100%);
   backdrop-filter: blur(15px) brightness(100%);
   background-color: #3F3C4E;
+  display: flex;
 }
 
 .timeBox .timeSection {
@@ -272,6 +360,7 @@
   border-radius: 10px 0px 0px 10px;
   display: flex;
   align-items: center;
+  
 }
 .dateTimeContainer {
   display: flex;
@@ -285,8 +374,10 @@
   font-family: 'mainFont';
   font-size: 32px;
   font-weight: 600;
- 
-  padding-left: 1px;
+  padding-top: 0px;
+  margin-top: 0px;
+  padding-right: 10px;
+  
 }
 
 
@@ -521,11 +612,64 @@ margin-bottom: 60px;
   
 }
 
-.newsBox{
-  
+.newsBox {
+  height: 245px;
+  width: 250px;
+  border-radius: 10px 0 0 10px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: column; /* Aligns children vertically */
+  justify-content: center; /* Center items vertically */
+  align-items: center; /* Center items horizontally */
+}
+.recent{
+  color:white;
+  font-weight:600;
+  font-family: 'mainFont';
+  font-size: 20px;
+  padding-left: 10px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
 
+ 
+}
 
+.recentStreet1{
+  color:white;
+  font-family: 'mainFont';
+  font-weight: 300;
+  font-size: 15px;
+  padding-right: 115px;
+  margin-bottom: 2px;
+
+  
+}
+
+.recentStreet2{
+  color:white;
+  font-family: 'mainFont';
+  font-weight: 300;
+  font-size: 15px;
+  padding-right: 105px;
+  margin-bottom: 2px;
+
+  
+}
+.recentTime{
+  color:white;
+  font-family: 'mainFont';
+  font-weight: 300;
+  font-size: 15px;
+  margin-top: 0px;
+  padding-right: 40px;
+  
+}
+
+.recentTime2{
+  color:white;
+  font-family: 'mainFont';
+  font-weight: 400;
+  font-size: 15px;
+  margin-top: 0px;
+  padding-top: 0px;
+  padding-right: 100px;
 }

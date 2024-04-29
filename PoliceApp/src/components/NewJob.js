@@ -1,5 +1,5 @@
 "use client";
-
+import axios from 'axios';
 import { useState, useEffect } from "react";
 import React from "react";
 import { db } from '../firebase';
@@ -16,7 +16,7 @@ import {
 
 export default function Intro() {
   const navigate = useNavigate()
-  const position = { lat: 30.2672, lng: -97.74711985445532 };
+  const [position, setPosition] = useState({ lat: 30.2672, lng: -97.74711985445532 }); // Default position
   const incident = {
     position: { lat: 30.2672, lng: -97.74711985445532 },
     address: "2510 Rio Grande St",
@@ -36,6 +36,27 @@ export default function Intro() {
 const [number, setNumber] = useState('');
 const [callTime, setCallTime] = useState(new Date().toLocaleTimeString());
 
+
+
+
+
+const getCoordinates = async (address) => {
+  try {
+    const response = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json`, {
+      params: {
+        address: address,
+        key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY
+      }
+    });
+    const { lat, lng } = response.data.results[0].geometry.location;
+    return { lat, lng };
+  } catch (error) {
+    console.error('Error during geocoding:', error);
+    return null;
+  }
+};
+
+
   useEffect(() => {
     setCallTime(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
 
@@ -49,6 +70,19 @@ const [callTime, setCallTime] = useState(new Date().toLocaleTimeString());
     });
     
   }, []);
+
+  
+useEffect(() => {
+  if (address) { // Ensure there is an address to geocode
+    const updatePosition = async () => {
+      const coords = await getCoordinates(address);
+      if (coords) {
+        setPosition(coords);
+      }
+    };
+    updatePosition();
+  }
+}, [address]); // Run this effect when 'address' changes
 
   function firstSectionNext() {
     if (priority > 0 && vehiclesDropdown > 0) {

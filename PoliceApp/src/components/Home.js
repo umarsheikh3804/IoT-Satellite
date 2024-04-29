@@ -4,6 +4,16 @@ import map from '../assets/map.svg';
 import { db } from '../firebase';
 import { onValue, ref } from "firebase/database";
 
+
+
+const vechicleTypes = {
+  1: "Cars",
+  2: "Ambulances",
+  3: "Firetrucks"
+}
+
+
+
 const DateTimeDisplay = ({ currentTime }) => {
   const formatTime = (time) => {
     const options = {
@@ -44,6 +54,7 @@ const DateTimeDisplay = ({ currentTime }) => {
 export const Home = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
   const [vehicleStats, setVehicleStats] = useState({available: 0, occupied: 0, away: 0})
+  const [jobs, setJobs] = useState([])
 
   useEffect(() => {
     const query = ref(db, `/vehicleStats`);
@@ -52,6 +63,17 @@ export const Home = () => {
       console.log(data)
       if (snapshot.exists()) {
         setVehicleStats(data)
+      }
+    });
+  }, []);
+
+  useEffect(() => {
+    const query = ref(db, `/jobs`);
+    return onValue(query, (snapshot) => {
+      const data = snapshot.val();
+      console.log(data)
+      if (snapshot.exists()) {
+        setJobs(Object.values(data))
       }
     });
   }, []);
@@ -110,9 +132,9 @@ export const Home = () => {
           </div>
           <div className = 'newsBox'>
             <p className = 'recent'>Recent Road Closures</p>
-            <p className = 'recentStreet'>N Main Blvd</p>
+            <p className = 'recentStreet1'>N Main Blvd</p>
             <p className = 'recentTime'>End: March 23 - 00:00</p>
-            <p className = 'recentStreet'>Guadalupe St</p>
+            <p className = 'recentStreet2'>Guadalupe St</p>
             <p className = 'recentTime2'>Mar 22 - 6:00</p>
           </div>
         </div>
@@ -121,15 +143,30 @@ export const Home = () => {
         <div className="jobTitle">
           <p className="allJobsTitle">All Jobs</p>
           <div className="blueNotification">
-            <p className="notificationText">65</p>
+            <p className="notificationText">{jobs.length}</p>
           </div>
         </div>
-        <div className="jobInfo">
-          <div className="jobContainer"></div>
-          
+        <div className="jobContainer">
+          <div className="jobHeader jobRow">
+            <p>Priority</p>
+            <p>Job</p>
+            <p>Address</p>
+            <p>Vehicles</p>
+            <p>Time</p>
+          </div>
+          <div className="jobList">
+            {jobs && jobs.map((job, index) => <div className="jobRow listItem" key={index}>
+              <p>{job.priority}</p>
+              <p>{job.job}</p>
+              <p>{job.address}</p>
+              <p>{vechicleTypes[job.vehicleType]}</p>
+              <p>{job.callTime}</p>
+
+            </div>)}
           </div>
         </div>
       </div>
+    </div>
   );
 };
 
