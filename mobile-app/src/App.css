@@ -97,13 +97,27 @@
   padding: 0.8em;
   border-top: 1px solid #7A7788;
   font-family: 'mainFont';
-  margin-left: 30px;
+  font-size: 19px;
   width: 330px;
 }
 
 .statusType {
   font-family: 'mainFont';
   margin-left: 50px;
+}
+
+.userData {
+  padding-left: 1em;
+}
+
+.policeName {
+  font-family: 'mainFont';
+  font-size: 25px;
+}
+
+.deptInfo {
+  font-family: 'mainFont';
+  font-size: 19px;
 }
 
 .allJobs {
@@ -161,6 +175,7 @@
   align-items: center;
   flex-direction: row;
   justify-content: space-evenly;
+  border-bottom: .5px solid;
 }
 
 .jobInfo .jobContainer {
@@ -222,3 +237,25 @@
   justify-content: space-between; 
 }
 
+
+.jobInfoBox {
+  position: absolute;
+  width: 100%;
+  height: 30vh;
+  bottom: 0;
+  background-color: #171422;
+  text-align: center;
+  /* border: 1px solid #cccccc; */
+}
+
+.notifTitle {
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: auto;
+}
+
+.notifInfo {
+  color: white;
+  font-size: 20px;
+}
