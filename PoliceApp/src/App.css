@@ -70,11 +70,16 @@
 
 .homePage{
   background-color: #070417;
+    position: relative; /* Ensures child absolute positioning is relative to this */
+    height: 100vh; /* Adjust based on your layout needs */
+    width: 100%;
+    
 }
 
 
 .topWrapper{
   display: flex;
+
   
 }
 
@@ -263,7 +268,9 @@
   -webkit-backdrop-filter: blur(15px) brightness(100%);
   backdrop-filter: blur(15px) brightness(100%);
   background-color: #3F3C4E;
+  z-index: 10;
 }
+
 
 .vehiclesBox .vehicleHeader {
   background-color: #292639;
@@ -391,6 +398,7 @@
   
 }
 
+
 .mapMarker {
   color: white;
   background-color: grey;
@@ -453,6 +461,8 @@ border-radius: 10px;
   align-items: flex-start;
   width: 100%;
 }
+
+
 
 
 
@@ -597,6 +607,33 @@ margin-bottom: 60px;
   height:40px;
   font-weight: 400;
   box-shadow: none;
+  margin-top: 60px;
+  margin-left: 230px;
+}
+.policeInfo{
+  margin-left: 200px;
+  margin-bottom: 100px;
+}
+
+.policeNum{
+  font-weight: 600;
+  font-family: 'mainFont';
+  font-size: 22;
+  color: white;
+}
+
+.policeDist{
+  font-family: 'mainFont';
+  font-size: 12;
+  color: white;
+  font-weight: 300;
+}
+
+.policeStatus{
+  font-family: 'mainFont';
+  font-size: 12;
+  color: white;
+  font-weight: 300;
 }
 
 .nextTag.cancel {

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import React from "react";
 import { db } from '../firebase';
 import line from '../assets/line.svg';
+import police from '../assets/police.png';
 import { onValue, ref,push,update } from "firebase/database";
 import { Link, useNavigate } from 'react-router-dom';
 import {
@@ -13,6 +14,8 @@ import {
   Pin,
   InfoWindow,
 } from '@vis.gl/react-google-maps';
+
+const statuses = ["On Call", "Occupied", "Away"];
 
 export default function Intro() {
   const navigate = useNavigate()
@@ -55,6 +58,8 @@ const getCoordinates = async (address) => {
     return null;
   }
 };
+
+
 
 
   useEffect(() => {
@@ -105,6 +110,7 @@ useEffect(() => {
   
       update(ref(db), updates).then(() => {
         setSection(1); 
+        
       }).catch(error => {
         alert('Failed to submit job: ' + error.message);
       });
@@ -175,9 +181,15 @@ useEffect(() => {
     <div className="newJob">
       <p className="newJobt">Suggested Units</p>
     </div>
-      
-     
-      
+      {/*{vehicles && vehicles.map((vehicle, i) => <div>
+        {vehicle.coords ? JSON.stringify(vehicle.coords) : ""}
+      </div>)} */ }
+      <img src={police} alt="Descriptive Alt Text" style={{ width: '60%', height: 'auto', marginLeft: 100, marginTop:100}} />
+      <div className= 'policeInfo'>
+        <p className ='policeNum'>Police Car 1234</p>
+        <p className ='policeDist'>0.2 mi • 3 min away</p>
+        <p className ='policeStatus'>Status: Active</p>
+      </div>
       <button className="nextTag" onClick={() => navigate("/")}>Confirm</button>
     </div>
     
